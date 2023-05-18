@@ -1,103 +1,78 @@
-main > .container, main > .container-fluid
-{
-    padding: 70px 15px 20px;
+html,
+body {
+    height: 100%;
 }
 
-.footer {
-    background-color: #f5f5f5;
-    font-size: .9em;
-    height: 60px;
+main {
+    flex: 1;
 }
 
-.footer > .container, .footer > .container-fluid {
-    padding-right: 15px;
-    padding-left: 15px;
+.content-wrapper {
+    flex: 1;
 }
 
-.not-set {
-    color: #c55;
-    font-style: italic;
+aside {
+    min-width: 200px;
 }
 
-/* add sorting icons to gridview sort links */
-a.asc:after, a.desc:after {
-    content: '';
-    left: 3px;
-    display: inline-block;
-    width: 0;
-    height: 0;
-    border: solid 5px transparent;
-    margin: 4px 4px 2px 4px;
-    background: transparent;
+aside .nav-pills .nav-link {
+    border-radius: 0;
+    color: #444444;
 }
 
-a.asc:after {
-    border-bottom: solid 7px #212529;
-    border-top-width: 0;
+
+aside .nav-pills .nav-link:hover {
+    background: rgba(0, 0, 0, 0.05);
 }
 
-a.desc:after {
-    border-top: solid 7px #212529;
-    border-bottom-width: 0;
+aside .nav-pills .nav-link.active {
+    background: rgba(0, 0, 0, 0.05);
+    color: #b90000;
+    border-left: 4px solid #b90000;
 }
 
-.grid-view th,
-.grid-view td:last-child {
-    white-space: nowrap;
+.content-wrapper {
+    margin-bottom: 200px;
 }
 
-.grid-view .filters input,
-.grid-view .filters select {
-    min-width: 50px;
+.create-comment .action-buttons {
+    display: none;
 }
 
-.hint-block {
+.create-comment.focused .action-buttons {
     display: block;
-    margin-top: 5px;
-    color: #999;
 }
 
-.error-summary {
-    color: #a94442;
-    background: #fdf7f7;
-    border-left: 3px solid #eed3d7;
-    padding: 10px 20px;
-    margin: 0 0 15px 0;
+.comment-item {
+    position: relative;
 }
 
-/* align the logout "link" (button in form) of the navbar */
-.navbar form > button.logout {
-    padding-top: 7px;
-    color: rgba(255, 255, 255, 0.5);
+.comment-avatar {
+    width: 50px;
 }
 
-@media(max-width:767px) {
-    .navbar form > button.logout {
-        display:block;
-        text-align: left;
-        width: 100%;
-        padding: 10px 0;
-    }
+.sub-comments .comment-avatar {
+    width: 24px;
 }
 
-.navbar form > button.logout:focus,
-.navbar form > button.logout:hover {
-    text-decoration: none;
-    color: rgba(255, 255, 255, 0.75);
+.comment-actions {
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
-.navbar form > button.logout:focus {
-    outline: none;
+.comment-actions .dropdown-toggle:after {
+    display: none;
 }
 
-/* style breadcrumb widget as in previous bootstrap versions */
-.breadcrumb {
-    background-color: var(--bs-gray-200);
-    border-radius: .25rem;
-    padding: .75rem 1rem;
+.comment-item .media-input {
+    display: none;
 }
 
-.breadcrumb-item > a
-{
-    text-decoration: none;
+.comment-item.edit .media-comment {
+    display: none;
+}
+
+.comment-item.edit .media-input {
+    display: flex;
 }
