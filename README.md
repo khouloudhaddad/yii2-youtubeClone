@@ -61,8 +61,7 @@ environments/            contains environment-based overrides
 
 ## [Apache configuration](https://github.com/yiisoft/yii2-app-advanced/blob/master/docs/guide/start-installation.md)
 
-## Installation
-[github repo](https://github.com/yiisoft/yii2-app-advanced/blob/master/docs/guide/start-installation.md)
+# Installation
 
 ## Configure apache on xampp
 Open `xampp\apache\conf\extra` and ad the following code <br/>
