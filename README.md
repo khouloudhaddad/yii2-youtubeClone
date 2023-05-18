@@ -64,7 +64,7 @@ environments/            contains environment-based overrides
 # Installation
 
 ## Configure apache on xampp
-Open `xampp\apache\conf\extra` and ad the following code <br/>
+Open `xampp\apache\conf\extra` and add the following code <br/>
 `
     <VirtualHost *:80>
         ServerName frontend.test
