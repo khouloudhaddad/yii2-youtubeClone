@@ -58,3 +58,61 @@ frontend
 vendor/                  contains dependent 3rd-party packages
 environments/            contains environment-based overrides
 ```
+## Installation
+[github repo](https://github.com/yiisoft/yii2-app-advanced/blob/master/docs/guide/start-installation.md)
+
+## Configure apache on xampp
+Open `xampp\apache\conf\extra` and ad the following code <br/>
+`
+    <VirtualHost *:80>
+        ServerName frontend.test
+        DocumentRoot "C:\xampp\htdocs\youtubeCloneYii\frontend\web"
+        
+        <Directory "C:\xampp\htdocs\youtubeCloneYii\frontend\web">
+            # use mod_rewrite for pretty URL support
+            RewriteEngine on
+            # If a directory or a file exists, use the request directly
+            RewriteCond %{REQUEST_FILENAME} !-f
+            RewriteCond %{REQUEST_FILENAME} !-d
+            # Otherwise forward the request to index.php
+            RewriteRule . index.php
+
+            # use index.php as index file
+            DirectoryIndex index.php
+
+            # ...other settings...
+            # Apache 2.4
+            Require all granted
+            
+            ## Apache 2.2
+            # Order allow,deny
+            # Allow from all
+        </Directory>
+    </VirtualHost>
+    
+    <VirtualHost *:80>
+        ServerName backend.test
+        DocumentRoot "C:\xampp\htdocs\youtubeCloneYii\backend\web"
+        
+        <Directory "C:\xampp\htdocs\youtubeCloneYii\backend\web">
+            # use mod_rewrite for pretty URL support
+            RewriteEngine on
+            # If a directory or a file exists, use the request directly
+            RewriteCond %{REQUEST_FILENAME} !-f
+            RewriteCond %{REQUEST_FILENAME} !-d
+            # Otherwise forward the request to index.php
+            RewriteRule . index.php
+
+            # use index.php as index file
+            DirectoryIndex index.php
+
+            # ...other settings...
+            # Apache 2.4
+            Require all granted
+            
+            ## Apache 2.2
+            # Order allow,deny
+            # Allow from all
+        </Directory>
+    </VirtualHost>
+`
