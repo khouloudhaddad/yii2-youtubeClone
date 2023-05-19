@@ -3,11 +3,8 @@
 /** @var \yii\web\View $this */
 /** @var string $content */
 
-use common\widgets\Alert;
-use frontend\assets\AppAsset;
-use yii\bootstrap5\Breadcrumbs;
+use backend\assets\AppAsset;
 use yii\bootstrap5\Html;
-
 
 AppAsset::register($this);
 ?>
@@ -27,7 +24,7 @@ AppAsset::register($this);
 <body class="d-flex flex-column h-100">
     <?php $this->beginBody() ?>
 
-    <div class="wrap d-flex flex-column">
+    <div class="wrap h-100 d-flex flex-column">
 
         <?php echo $content ?>
 
