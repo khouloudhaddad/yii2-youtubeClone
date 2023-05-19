@@ -164,6 +164,16 @@ aside .nav-pills .nav-link.active {
     border-color:#198754;
 }
 
+.form-control{
+    margin-bottom:1rem;
+    border-radius: 0.25rem;
+}
+
+label{
+    margin-bottom: 0.15rem;
+    color: #777;
+}
+
 @media screen and (max-width:767px){
   .btn-back{
     width: 100%;

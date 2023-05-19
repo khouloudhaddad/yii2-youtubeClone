@@ -14,7 +14,7 @@ $this->beginContent('@backend/views/layouts/base.php');
 <main role="main" class="d-flex h-100">
     <!-- sidebar section -->
     <?php echo $this->render('_sidebar') ?>
-    <div class="content-wrapper p-3">
+    <div class="content-wrapper p-4">
         <?= Breadcrumbs::widget([
             'homeLink' => [
                 'label' => '<i class="fa fa-home">&nbsp;</i>' . Yii::t('yii', 'Home'),
