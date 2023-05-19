@@ -16,6 +16,11 @@ $this->beginContent('@frontend/views/layouts/base.php');
     <?php echo $this->render('_sidebar') ?>
     <div class="content-wrapper p-3">
         <?= Breadcrumbs::widget([
+            'homeLink' => [
+                'label' => '<i class="fa fa-home">&nbsp;</i>' . Yii::t('yii', 'Home'),
+                'url' => Yii::$app->homeUrl,
+                'encode' => false // Requested feature
+            ],
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= Alert::widget() ?>

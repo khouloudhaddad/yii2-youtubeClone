@@ -23,14 +23,26 @@ a:focus {
   color: var(--brick-red);
   transition: all 0.4s;
 }
+.breadcrumb-item{
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  content: "\f101";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-size: 0.7rem;
+  margin-top: 0.25rem;
+}
 
 .btn-primary {
   background-color: var(--dark-red);
   border-color: var(--dark-red);
 }
 
-.bg-primary{
-    background-color: var(--primary) !important;
+.bg-primary {
+  background-color: var(--primary) !important;
 }
 
 .btn-primary:hover,
@@ -52,12 +64,20 @@ a:focus {
 
 main {
   flex: 1;
+}
+main.auth {
   justify-content: center;
   align-items: center;
 }
 
 .content-wrapper {
   flex: 1;
+}
+
+header .text-light:hover,
+header .text-light:focus {
+  color: rgba(255, 255, 255, 0.75) !important;
+  transition: all 0.4s;
 }
 
 aside {
@@ -133,4 +153,10 @@ aside .nav-pills .nav-link.active {
 .call_action svg:focus {
   fill: var(--brick-red);
   transition: all 0.4s;
+}
+
+.site-error h1{
+  color: var(--primary);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
 }
