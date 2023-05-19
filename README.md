@@ -125,3 +125,6 @@ php yii migrate/create create_videos_table --fields="video_id:string(16):notNull
 ```
 
 to generate a new migration for table video
+
+## Models
+Navigate to `http://backend.test/gii` to generate a video model class

@@ -1,90 +1,172 @@
-main > .container {
-    padding: 70px 15px 20px;
+:root {
+  --primary: #003049;
+  --secondary: #669bbc;
+  --dark-red: #780000;
+  --brick-red: #c1121f;
+  --light-red: #fdf0d5;
 }
 
-.footer {
-    background-color: #f5f5f5;
-    font-size: .9em;
-    height: 60px;
+html,
+body {
+  height: 100%;
+  color: #333;
 }
 
-.footer > .container {
-    padding-right: 15px;
-    padding-left: 15px;
+a {
+  text-decoration: none;
+  color: var(--dark-red);
 }
 
-.not-set {
-    color: #c55;
-    font-style: italic;
+a:hover,
+a:focus {
+  text-decoration: none;
+  color: var(--brick-red);
+  transition: all 0.4s;
+}
+.breadcrumb-item{
+  display: flex;
+  align-items: center;
 }
 
-/* add sorting icons to gridview sort links */
-a.asc:after, a.desc:after {
-    content: '';
-    left: 3px;
-    display: inline-block;
-    width: 0;
-    height: 0;
-    border: solid 5px transparent;
-    margin: 4px 4px 2px 4px;
-    background: transparent;
+.breadcrumb-item + .breadcrumb-item::before {
+  content: "\f101";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-size: 0.7rem;
+  margin-top: 0.25rem;
 }
 
-a.asc:after {
-    border-bottom: solid 7px #212529;
-    border-top-width: 0;
+.btn-primary {
+  background-color: var(--dark-red);
+  border-color: var(--dark-red);
 }
 
-a.desc:after {
-    border-top: solid 7px #212529;
-    border-bottom-width: 0;
+.bg-primary {
+  background-color: var(--primary) !important;
 }
 
-.grid-view th,
-.grid-view td:last-child {
-    white-space: nowrap;
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--brick-red);
+  border-color: var(--brick-red);
+  transition: all 0.4s;
+}
+.form-control:focus,
+.form-control:focus {
+  border-color: var(--brick-red);
+  box-shadow: 0 0 0 0.25rem var(--light-red);
 }
 
-.grid-view .filters input,
-.grid-view .filters select {
-    min-width: 50px;
+.form-check-input:checked {
+  background-color: var(--dark-red);
+  border-color: var(--dark-red);
 }
 
-.hint-block {
-    display: block;
-    margin-top: 5px;
-    color: #999;
+main {
+  flex: 1;
+}
+main.auth {
+  justify-content: center;
+  align-items: center;
 }
 
-.error-summary {
-    color: #a94442;
-    background: #fdf7f7;
-    border-left: 3px solid #eed3d7;
-    padding: 10px 20px;
-    margin: 0 0 15px 0;
+.content-wrapper {
+  flex: 1;
 }
 
-/* align the logout "link" (button in form) of the navbar */
-.nav li > form > button.logout {
-    padding-top: 7px;
-    color: rgba(255, 255, 255, 0.5);
+header .text-light:hover,
+header .text-light:focus {
+  color: rgba(255, 255, 255, 0.75) !important;
+  transition: all 0.4s;
 }
 
-@media(max-width:767px) {
-    .nav li > form > button.logout {
-        display:block;
-        text-align: left;
-        width: 100%;
-        padding: 10px 0;
-    }
+aside {
+  min-width: 230px;
 }
 
-.nav > li > form > button.logout:focus,
-.nav > li > form > button.logout:hover {
-    text-decoration: none;
-    color: rgba(255, 255, 255, 0.75);
+aside .nav-pills .nav-link {
+  border-radius: 0;
+  color: #444444;
 }
 
-.nav > li > form > button.logout:focus {
-    outline: none;
+aside .nav-pills .nav-link:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+aside .nav-pills .nav-link.active {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--dark-red);
+  border-left: 4px solid var(--dark-red);
+}
+
+.create-comment .action-buttons {
+  display: none;
+}
+
+.create-comment.focused .action-buttons {
+  display: block;
+}
+
+.comment-item {
+  position: relative;
+}
+
+.comment-avatar {
+  width: 50px;
+}
+
+.sub-comments .comment-avatar {
+  width: 24px;
+}
+
+.comment-actions {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.comment-actions .dropdown-toggle:after {
+  display: none;
+}
+
+.comment-item .media-input {
+  display: none;
+}
+
+.comment-item.edit .media-comment {
+  display: none;
+}
+
+.comment-item.edit .media-input {
+  display: flex;
+}
+
+.call_action {
+  font-weight: 500;
+}
+
+.call_action svg {
+  width: 20px;
+  fill: var(--dark-red);
+}
+.call_action svg:hover,
+.call_action svg:focus {
+  fill: var(--brick-red);
+  transition: all 0.4s;
+}
+
+.site-error h1{
+  color: var(--primary);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+.was-validated .form-check-input:valid:checked, .form-check-input.is-valid:checked{
+    border-color:#198754;
+}
+
+@media screen and (max-width:767px){
+  .btn-back{
+    width: 100%;
+    margin-top: 20px;
+  }
 }

@@ -161,6 +161,10 @@ aside .nav-pills .nav-link.active {
   margin-bottom: 1.5rem;
 }
 
+.was-validated .form-check-input:valid:checked, .form-check-input.is-valid:checked{
+    border-color:#198754;
+}
+
 @media screen and (max-width:767px){
   .btn-back{
     width: 100%;
