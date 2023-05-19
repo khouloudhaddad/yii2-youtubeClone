@@ -80,16 +80,21 @@ class VideoController extends Controller
     public function actionCreate()
     {
         $model = new Video();
-        $file = UploadedFile::getInstanceByName('video');
-        var_dump($file);
+        $model->video = UploadedFile::getInstanceByName('video');
 
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+        if ($this->request->isPost && $model->save()) {
+
                 return $this->redirect(['view', 'video_id' => $model->video_id]);
-            }
-        } else {
-            $model->loadDefaultValues();
+
         }
+// else {
+//            $model->loadDefaultValues();
+//        }
+
+//        echo '<pre>';
+//        var_dump($model->load($this->request->post()));
+//        echo '</pre>';
+//        exit;
 
         return $this->render('create', [
             'model' => $model,

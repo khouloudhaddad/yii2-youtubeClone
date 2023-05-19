@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\FileHelper;
 
 /**
  * This is the model class for table "{{%videos}}".
@@ -22,6 +23,10 @@ use Yii;
  */
 class Video extends \yii\db\ActiveRecord
 {
+    /**
+     * @var
+     */
+    public $video;
     /**
      * {@inheritdoc}
      */
@@ -82,5 +87,34 @@ class Video extends \yii\db\ActiveRecord
     public static function find()
     {
         return new \common\models\query\VideoQuery(get_called_class());
+    }
+
+    /**
+     *
+     */
+    public function save($runValidation = true, $attributeNames = null)
+    {
+        $isInsert = $this->isNewRecord;
+        if($isInsert){
+            $this->video_id = Yii::$app->security->generateRandomString(8);
+            $this->title = $this->video->name;
+            $this->video_name = $this->video->name;
+        }
+        $saved = parent::save($runValidation, $attributeNames);
+        //var_dump($saved);//exit;
+        if(!$saved){
+            return false;
+        }
+        if($isInsert){
+            $videoPath = Yii::getAlias('@frontend/web/storage/videos/' .$this->video_id. '.mp4');
+            if(!is_dir(dirname($videoPath))){
+                FileHelper::createDirectory(dirname($videoPath));
+            }
+
+            $this->video->saveAs($videoPath);
+        }
+
+        return true;
+
     }
 }
