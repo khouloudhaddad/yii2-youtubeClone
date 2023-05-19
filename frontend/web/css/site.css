@@ -160,3 +160,10 @@ aside .nav-pills .nav-link.active {
   text-transform: uppercase;
   margin-bottom: 1.5rem;
 }
+
+@media screen and (max-width:767px){
+  .btn-back{
+    width: 100%;
+    margin-top: 20px;
+  }
+}

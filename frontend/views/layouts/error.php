@@ -4,6 +4,7 @@
 /* @var $content string */
 
 use common\widgets\Alert;
+use yii\bootstrap5\Html;
 
 $this->beginContent('@frontend/views/layouts/base.php');
 ?>
@@ -17,6 +18,10 @@ $this->beginContent('@frontend/views/layouts/base.php');
                 <div class="col-md-6">
                     <?= Alert::widget() ?>
                     <?= $content ?>
+                    <div class="d-block mt-4">
+                        <?= Html::a(Html::tag('i', '', ['class' => 'fa-solid fa-arrow-left']) . ' Back to Homepage ', ['site/index'], ['class' => 'btn-back btn btn-primary', 'title' => 'Back to Homepage']) ?>
+                    </div>
+
                 </div>
             </div>
         </div>
