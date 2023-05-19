@@ -1,78 +1,136 @@
+:root {
+  --primary: #003049;
+  --secondary: #669bbc;
+  --dark-red: #780000;
+  --brick-red: #c1121f;
+  --light-red: #fdf0d5;
+}
+
 html,
 body {
-    height: 100%;
+  height: 100%;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: var(--dark-red);
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+  color: var(--brick-red);
+  transition: all 0.4s;
+}
+
+.btn-primary {
+  background-color: var(--dark-red);
+  border-color: var(--dark-red);
+}
+
+.bg-primary{
+    background-color: var(--primary) !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--brick-red);
+  border-color: var(--brick-red);
+  transition: all 0.4s;
+}
+.form-control:focus,
+.form-control:focus {
+  border-color: var(--brick-red);
+  box-shadow: 0 0 0 0.25rem var(--light-red);
+}
+
+.form-check-input:checked {
+  background-color: var(--dark-red);
+  border-color: var(--dark-red);
 }
 
 main {
-    flex: 1;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
 }
 
 .content-wrapper {
-    flex: 1;
+  flex: 1;
 }
 
 aside {
-    min-width: 200px;
+  min-width: 230px;
 }
 
 aside .nav-pills .nav-link {
-    border-radius: 0;
-    color: #444444;
+  border-radius: 0;
+  color: #444444;
 }
 
-
 aside .nav-pills .nav-link:hover {
-    background: rgba(0, 0, 0, 0.05);
+  background: rgba(0, 0, 0, 0.05);
 }
 
 aside .nav-pills .nav-link.active {
-    background: rgba(0, 0, 0, 0.05);
-    color: #b90000;
-    border-left: 4px solid #b90000;
-}
-
-.content-wrapper {
-    margin-bottom: 200px;
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--dark-red);
+  border-left: 4px solid var(--dark-red);
 }
 
 .create-comment .action-buttons {
-    display: none;
+  display: none;
 }
 
 .create-comment.focused .action-buttons {
-    display: block;
+  display: block;
 }
 
 .comment-item {
-    position: relative;
+  position: relative;
 }
 
 .comment-avatar {
-    width: 50px;
+  width: 50px;
 }
 
 .sub-comments .comment-avatar {
-    width: 24px;
+  width: 24px;
 }
 
 .comment-actions {
-    position: absolute;
-    right: 0;
-    top: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .comment-actions .dropdown-toggle:after {
-    display: none;
+  display: none;
 }
 
 .comment-item .media-input {
-    display: none;
+  display: none;
 }
 
 .comment-item.edit .media-comment {
-    display: none;
+  display: none;
 }
 
 .comment-item.edit .media-input {
-    display: flex;
+  display: flex;
+}
+
+.call_action {
+  font-weight: 500;
+}
+
+.call_action svg {
+  width: 20px;
+  fill: var(--dark-red);
+}
+.call_action svg:hover,
+.call_action svg:focus {
+  fill: var(--brick-red);
+  transition: all 0.4s;
 }
