@@ -118,3 +118,10 @@ Open `xampp\apache\conf\extra` and add the following code <br/>
         </Directory>
     </VirtualHost>
 `
+## Migrations
+Run 
+```
+php yii migrate/create create_videos_table --fields="video_id:string(16):notNull,title:string(512):notNull,description:text,created_by:integer(11):foreignKey(user)" 
+```
+
+to generate a new migration for table video
