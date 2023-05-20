@@ -13,6 +13,28 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
     <div class="row">
+        <div class="col-sm-8">
+            <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+            <?= $form->field($model, 'tags')->textInput(['maxlength' => true]) ?>
+
+        </div>
+        <div class="col-sm-4">
+            <div>
+                <span class="text-muted">Video Link</span>
+                <?php echo $model->getVideoLink() ?>
+            </div>
+
+            <div>
+                <span class="text-muted">Video Name</span>
+                <?php echo $model->video_name ?>
+            </div>
+
+            <?= $form->field($model, 'status')->textInput() ?>
+        </div>
+    </div>
+
+    <div class="row">
         <div class="col-md-4">
             <?= $form->field($model, 'video_id')->textInput(['maxlength' => true]) ?>
         </div>
@@ -24,14 +46,8 @@ use yii\widgets\ActiveForm;
         </div>
     </div>
 
-    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+
     <div class="row">
-        <div class="col-md-4">
-            <?= $form->field($model, 'tags')->textInput(['maxlength' => true]) ?>
-        </div>
-        <div class="col-md-4">
-            <?= $form->field($model, 'status')->textInput() ?>
-        </div>
         <div class="col-md-4">
             <?= $form->field($model, 'has_thumbnail')->textInput() ?>
         </div>
