@@ -15,7 +15,7 @@ use yii\bootstrap5\Nav;
                 'url' => ['/site/index']
             ],
             [
-                'label' => '<i class="fas fa-list"></i> Home',
+                'label' => '<i class="fas fa-list"></i> Videos',
                 'url' => ['/video/index']
             ],
             [

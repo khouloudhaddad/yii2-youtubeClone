@@ -50,8 +50,8 @@ use yii\widgets\ActiveForm;
                 </a>
             </div>
 
-            <div>
-                <span class="text-muted">Video Name</span>
+            <div class="mb-3">
+                <span class="text-muted d-block">Video Name</span>
                 <?php echo $model->video_name ?>
             </div>
 

@@ -205,4 +205,6 @@ label{
   height: 100%;
   opacity: 0;
 }
-
+.flex-1{
+  flex: 0 0 30%;
+}
