@@ -34,7 +34,9 @@ use yii\widgets\ActiveForm;
                 </div>
             </div>
 
-            <?= $form->field($model, 'tags')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'tags', [
+                'inputOptions' =>['data-role' => 'tagsinput']
+            ])->textInput(['maxlength' => true]) ?>
 
         </div>
         <div class="col-sm-4">
