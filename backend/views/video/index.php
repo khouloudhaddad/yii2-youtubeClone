@@ -14,11 +14,11 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="video-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="d-flex align-items-center justify-content-between mb-4">
+        <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Create Video', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+        <?= Html::a('Create Video', ['create'], ['class' => 'btn btn-primary']) ?>
+    </div>
 
 
     <?= GridView::widget([
@@ -26,21 +26,31 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'video_id',
+            [
+                'attribute' => 'video_id',
+                'content' => function ($model) {
+                    return $this->render('_video_item', ['model' => $model]);
+                }
+            ],
             'title',
             //'description:ntext',
             //'tags',
-            'status',
+            [
+                'attribute' => 'status',
+                'content' => function ($model) {
+                    return $model->getStatusLabels()[$model->status];
+                }
+            ],
             //'has_thumbnail',
             //'video_name',
             //'created_by',
-            'created_at',
-            'updated_at',
+            'created_at:datetime',
+            'updated_at:datetime',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Video $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'video_id' => $model->video_id]);
-                 }
+                }
             ],
         ],
     ]); ?>
