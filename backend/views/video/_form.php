@@ -6,6 +6,7 @@ use yii\widgets\ActiveForm;
 /** @var yii\web\View $this */
 /** @var common\models\Video $model */
 /** @var yii\widgets\ActiveForm $form */
+\backend\assets\TagsInputAsset::register($this);
 ?>
 
 <div class="video-form">
@@ -16,6 +17,7 @@ use yii\widgets\ActiveForm;
 
     <div class="row">
         <div class="col-sm-8">
+            <?php echo $form->errorSummary($model) ?>
             <div class="mb-3">
                 <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
             </div>
@@ -37,11 +39,8 @@ use yii\widgets\ActiveForm;
         </div>
         <div class="col-sm-4">
             <div class="ratio ratio-16x9 mb-3">
-                <video
-                poster="<?php echo $model->getThumbnailLink() ?>" 
-                src="<?php echo $model->getVideoLink() ?>" 
-                title="YouTube video" controls allowfullscreen>
-            </video>
+                <video poster="<?php echo $model->getThumbnailLink() ?>" src="<?php echo $model->getVideoLink() ?>" title="YouTube video" controls allowfullscreen>
+                </video>
             </div>
             <div class="mb-3">
                 <a href="<?php echo $model->getVideoLink() ?>">
