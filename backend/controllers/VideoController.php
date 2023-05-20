@@ -5,6 +5,7 @@ namespace backend\controllers;
 use common\models\Video;
 use yii\data\ActiveDataProvider;
 use yii\debug\panels\DumpPanel;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -23,6 +24,15 @@ class VideoController extends Controller
         return array_merge(
             parent::behaviors(),
             [
+                'access' =>[
+                    'class' => AccessControl::class,
+                    'rules' => [
+                        [
+                            'allow' => true,
+                            'roles' => ['@']
+                        ]
+                    ]
+                ],
                 'verbs' => [
                     'class' => VerbFilter::className(),
                     'actions' => [
