@@ -27,11 +27,17 @@ class Video extends \yii\db\ActiveRecord
 {
 
     const STATUS_UNLISTED = 0;
-    const STATUS_PUBLISHED = 0;
+    const STATUS_PUBLISHED = 1;
     /**
-     * @var
+     * @var \yii\web\UploadedFile
      */
     public $video;
+
+    /**
+     * @var \yii\web\UploadedFile
+     */
+    public $thumbnail;
+
     /**
      * {@inheritdoc}
      */
@@ -85,6 +91,7 @@ class Video extends \yii\db\ActiveRecord
             'created_by' => 'Created By',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
+            'thumbnail' => 'Thumbnail',
         ];
     }
 
@@ -118,6 +125,10 @@ class Video extends \yii\db\ActiveRecord
             $this->title = $this->video->name;
             $this->video_name = $this->video->name;
         }
+        if($this->thumbnail){
+            $this->has_thumbnail = 1;
+        }
+
         $saved = parent::save($runValidation, $attributeNames);
         //var_dump($saved);//exit;
         if(!$saved){
@@ -132,6 +143,16 @@ class Video extends \yii\db\ActiveRecord
             $this->video->saveAs($videoPath);
         }
 
+        //save the video thumbnail if it exists
+        if($this->thumbnail){
+            $thumbnailPath = Yii::getAlias('@frontend/web/storage/thumbs/' . $this->video_id . '.jpg');
+            if (!is_dir(dirname($thumbnailPath))) {
+                FileHelper::createDirectory(dirname($thumbnailPath));
+            }
+
+            $this->thumbnail->saveAs($thumbnailPath);
+        }
+
         return true;
     }
 
@@ -140,6 +161,27 @@ class Video extends \yii\db\ActiveRecord
      */
     public function getVideoLink()
     {
-        return Yii::$app->params['frontendUrl'].'storage/videos/'. $this->video_id .'mp4';
+        return Yii::$app->params['frontendUrl'].'storage/videos/'. $this->video_id .'.mp4';
+    }
+
+    /**
+     * @return thumbnailLink
+     */
+    public function getThumbnailLink()
+    {
+        return Yii::$app->params['frontendUrl'] . 'storage/thumbs/' . $this->video_id . '.jpg';
+    }
+
+    public function getStatusLabels()
+    {
+        return [
+            self::STATUS_UNLISTED => 'Unlisted',
+            self::STATUS_PUBLISHED => 'Published',
+        ];
+    }
+
+    public function getStatus()
+    {
+        return $this->status == 0 ? '0': '1';
     }
 }

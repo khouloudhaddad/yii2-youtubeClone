@@ -165,12 +165,10 @@ aside .nav-pills .nav-link.active {
 }
 
 .form-control{
-    margin-bottom:1rem;
     border-radius: 0.25rem;
 }
 
 label{
-    margin-bottom: 0.15rem;
     color: #777;
 }
 

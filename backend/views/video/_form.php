@@ -10,19 +10,43 @@ use yii\widgets\ActiveForm;
 
 <div class="video-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+        'options' => ['enctype' => 'multipart/form-data']
+    ]); ?>
 
     <div class="row">
         <div class="col-sm-8">
-            <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-            <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+            <div class="mb-3">
+                <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+            </div>
+
+            <div class="mb-3">
+                <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="thumbnail"><?php echo $model->attributeLabels()['thumbnail'] ?></label>
+                <div class="input-group">
+                    <input type="file" class="form-control" id="thumbnail" name="thumbnail">
+                    <label class="input-group-text" for="thumbnail">Upload</label>
+                </div>
+            </div>
+
             <?= $form->field($model, 'tags')->textInput(['maxlength' => true]) ?>
 
         </div>
         <div class="col-sm-4">
-            <div>
-                <span class="text-muted">Video Link</span>
-                <?php echo $model->getVideoLink() ?>
+            <div class="ratio ratio-16x9 mb-3">
+                <video
+                poster="<?php echo $model->getThumbnailLink() ?>" 
+                src="<?php echo $model->getVideoLink() ?>" 
+                title="YouTube video" controls allowfullscreen>
+            </video>
+            </div>
+            <div class="mb-3">
+                <a href="<?php echo $model->getVideoLink() ?>">
+                    Open Video
+                </a>
             </div>
 
             <div>
@@ -30,7 +54,23 @@ use yii\widgets\ActiveForm;
                 <?php echo $model->video_name ?>
             </div>
 
-            <?= $form->field($model, 'status')->textInput() ?>
+            <?= $form
+                ->field($model, 'status')
+                ->label('Status')
+                ->dropDownList(
+                    $model->getStatusLabels(),
+                    [
+                        'prompt' => 'Choose ...',
+                        'class' => 'form-select',
+
+                        'options' =>
+                        [
+                            $model->getStatus() => ['selected' => true]
+                        ]
+
+                    ]
+                )
+            ?>
         </div>
     </div>
 
@@ -38,9 +78,7 @@ use yii\widgets\ActiveForm;
         <div class="col-md-4">
             <?= $form->field($model, 'video_id')->textInput(['maxlength' => true]) ?>
         </div>
-        <div class="col-md-4">
-            <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
-        </div>
+
         <div class="col-md-4">
             <?= $form->field($model, 'video_name')->textInput(['maxlength' => true]) ?>
         </div>
